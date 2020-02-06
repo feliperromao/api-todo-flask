@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    container_name: todo_api
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "80:5000"
+    depends_on:
+      - database
+    networks:
+      - default
+  database:
+    image: mongo
+    container_name: todo_db
+    ports:
+      - "27010:27017"
+    networks:
+      - default
+  
+networks:
+  default:
+    driver: bridge
