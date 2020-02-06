@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from services.todoService import Todo, get_all
+from services.todoService import Todo, get_all, store
 
 todo = Blueprint('todo', __name__)
 
@@ -14,12 +14,7 @@ def list():
 # Adiciona novo TODO
 @todo.route('/', methods=['POST'])
 def create():
-    title = request.form['title']
-    description = request.form['description']
-    date = request.form['date']
-
-    new_todo = Todo(title, description, date)
-    new_todo.save()
+    new_todo = store(request.form)
 
     return new_todo.__str__()
 

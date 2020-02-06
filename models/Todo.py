@@ -11,11 +11,12 @@ class Todo(Model):
 
     def save(self):
         Model.collection_name = 'todo'
-        Model.create({
-            'title': self.title,
-            'description': self.description,
-            'date': self.date,
-        })
+        new_todo = Model.create({
+                        'title': self.title,
+                        'description': self.description,
+                        'date': self.date,
+                    })
+        return new_todo
 
     def __str__(self):
         return {
