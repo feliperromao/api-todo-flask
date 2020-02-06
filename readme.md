@@ -7,12 +7,17 @@ This is an REST API for CRUD(create, read, update and delete) resources in a dat
 ## The TODOs
 
 ### List
+
 **Path**: `/todo`
+
 **Method**: `GET`
 
 ### Create
+
 **Path**: `/todo`
+
 **Method**: `POST`
+
 **Body**:
 ```json
 {
