@@ -1,5 +1,5 @@
-from flask import Blueprint
-from services.todoService import get_all
+from flask import Blueprint, request
+from services.todoService import Todo, get_all
 
 todo = Blueprint('todo', __name__)
 
@@ -14,7 +14,14 @@ def list():
 # Adiciona novo TODO
 @todo.route('/', methods=['POST'])
 def create():
-    pass
+    title = request.form['title']
+    description = request.form['description']
+    date = request.form['date']
+
+    new_todo = Todo(title, description, date)
+    new_todo.save()
+
+    return new_todo.__str__()
 
 
 # Adiciona novo TODO

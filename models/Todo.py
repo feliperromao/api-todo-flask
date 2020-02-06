@@ -9,6 +9,21 @@ class Todo(Model):
         self.description = description
         self.date = date
 
+    def save(self):
+        Model.collection_name = 'todo'
+        Model.create({
+            'title': self.title,
+            'description': self.description,
+            'date': self.date,
+        })
+
+    def __str__(self):
+        return {
+            'title': self.title,
+            'description': self.description,
+            'date': self.date
+        }
+
 
     @staticmethod
     def all():

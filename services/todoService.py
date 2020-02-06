@@ -4,7 +4,7 @@ def get_all():
     return Todo.all()
 
 
-def create():
+def store():
     pass
 
 
