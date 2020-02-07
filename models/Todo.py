@@ -16,7 +16,9 @@ class Todo(Model):
                         'description': self.description,
                         'date': self.date,
                     })
-        return new_todo
+
+
+        return dict(Model.find_one(new_todo.inserted_id))
 
     def __str__(self):
         return {

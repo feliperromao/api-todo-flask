@@ -1,22 +1,27 @@
 version: "3.7"
 
 services:
+  database:
+    image: mongo:3.6.10
+    container_name: todo_db
+    restart: unless-stopped
+    ports:
+      - "27010:27017"
+    networks:
+      - default
+    volumes: 
+        - ./.volumes/db:/data
+
   app:
     build: .
     container_name: todo_api
+    restart: always
     volumes:
       - .:/usr/src/app
     ports:
       - "8080:5000"
     depends_on:
       - database
-    networks:
-      - default
-  database:
-    image: mongo
-    container_name: todo_db
-    ports:
-      - "27010:27017"
     networks:
       - default
   

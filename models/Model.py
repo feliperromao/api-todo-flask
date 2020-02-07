@@ -14,3 +14,8 @@ class Model:
     def create(data):
         collection = db[Model.collection_name]
         return collection.insert_one(data)
+
+    @staticmethod
+    def find_one(id):
+        collection = db[Model.collection_name]
+        return collection.find_one(id)
