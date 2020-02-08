@@ -13,7 +13,7 @@ class Model:
     @staticmethod
     def create(data):
         collection = db[Model.collection_name]
-        return collection.insert_one(data)
+        return collection.insert_one(data).inserted_id
 
     @staticmethod
     def find_one(id):

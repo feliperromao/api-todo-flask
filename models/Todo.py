@@ -16,9 +16,8 @@ class Todo(Model):
                         'description': self.description,
                         'date': self.date,
                     })
-
-
-        return dict(Model.find_one(new_todo.inserted_id))
+        print('*** CRIADO COM SUCESSO ***')
+        return new_todo
 
     def __str__(self):
         return {

@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from services.todoService import Todo, get_all, store
 
 todo = Blueprint('todo', __name__)
@@ -14,9 +14,18 @@ def list():
 # Adiciona novo TODO
 @todo.route('/', methods=['POST'])
 def create():
-    new_todo = store(request.form)
 
-    return new_todo.__str__()
+    if store(request.form):
+        result = {
+            'status': True,
+            'message': 'Adicionado com sucesso'
+        }
+        return jsonify(result)
+    else:
+        return jsonify({
+            'status': False,
+            'message': 'Erro ao salvar'
+        }), 500
 
 
 # Adiciona novo TODO
